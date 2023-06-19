@@ -1,8 +1,10 @@
+import './Footer.css';
+
 const Footer = () => {
   return (
-    <div>
+    <footer>
       <small>&copy;brmmm All rights reserved.</small>
-    </div>
+    </footer>
   );
 };
 

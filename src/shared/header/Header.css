@@ -1,0 +1,19 @@
+#header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: darkolivegreen;
+    padding: 0px 30px;
+}
+
+ul {
+    list-style-type: none;
+    display: flex;
+    gap: 10px;
+    text-transform: uppercase;
+}
+
+#icons{
+    display: flex;
+    gap: 10px;
+}

@@ -1,0 +1,36 @@
+#product-details-root {
+  width: 80%;
+  margin: 50px auto;
+}
+
+#product-details-section {
+  border: 1px solid;
+  padding: 20px;
+  gap: 20px;
+  /* align-items: center; */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+#product-info{
+    display: flex;
+    flex-direction: column;
+}
+
+#btn-container {
+  margin-top: auto;
+  gap: 10px;
+  display: flex;
+  flex-direction: row;
+  font-weight: bold;
+}
+
+#suggested-section {
+  margin-top: 20px;
+}
+
+#product-card-container {
+  gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}

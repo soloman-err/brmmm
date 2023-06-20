@@ -1,5 +1,5 @@
 // import { Helmet } from "react-helmet";
-import './ProductDetails.css';
+import './ProductDetails.scss';
 
 import { Link } from 'react-router-dom';
 import ProductCard from '../productCard/productCard';

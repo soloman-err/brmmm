@@ -1,8 +1,8 @@
 header {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   align-items: center;
-  padding: 5px 20px;
+  padding: 15px 20px;
   border-bottom: 1px solid;
 
   #menu-bar {
@@ -26,6 +26,11 @@ header {
       display: flex;
       flex-direction: row;
       align-items: center;
+
+      img {
+        width: 30px;
+        height: 30px;
+      }
     }
 
     #currency {
@@ -34,23 +39,24 @@ header {
       align-items: center;
     }
 
-    ul {
+    nav {
       display: flex;
-      gap: 10px;
+      justify-content: start;
       list-style: none;
-      align-items: center;
+      gap: 10px;
     }
   }
 
-  #icons {
-    display: flex;
-    gap: 0 5px;
+  #center {
     font-size: 20px;
+    display: flex;
+    justify-content: center;
   }
 
   #right {
     display: flex;
     align-items: center;
+    justify-content: end;
     gap: 0 10px;
 
     #search {
@@ -70,14 +76,22 @@ header {
 }
 
 /* Responsive Area */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
   header {
     #menu-bar {
       display: flex;
     }
 
-    ul {
+    #left {
       display: none;
+    }
+
+    #right {
+      #search {
+        input {
+          display: none;
+        }
+      }
     }
   }
 }

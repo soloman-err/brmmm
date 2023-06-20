@@ -1,6 +1,7 @@
 // import { Helmet } from "react-helmet";
 import './ProductDetails.css';
 
+import { Link } from 'react-router-dom';
 import ProductCard from '../productCard/productCard';
 
 const ProductDetails = () => {
@@ -32,12 +33,12 @@ const ProductDetails = () => {
           </div>
 
           <div id="btn-container">
-            <button style={{ backgroundColor: 'red'}}>
-              Buy Now
-            </button>
-            <button style={{ backgroundColor: 'orange'}}>
-              Add To Cart
-            </button>
+            <Link to={'/buy-now/payment'}>
+              <button style={{ backgroundColor: 'red' }}>Buy Now</button>
+            </Link>
+            <Link to={'/cart'}>
+              <button style={{ backgroundColor: 'orange' }}>Add To Cart</button>
+            </Link>
           </div>
         </div>
       </section>

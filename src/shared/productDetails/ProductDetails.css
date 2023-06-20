@@ -20,8 +20,8 @@
 #btn-container {
   margin-top: auto;
   gap: 10px;
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   font-weight: bold;
 }
 

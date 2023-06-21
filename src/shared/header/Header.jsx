@@ -1,9 +1,42 @@
+import { Toaster } from 'react-hot-toast';
 import { BiChevronDown } from 'react-icons/bi';
 import { FaBars, FaCartPlus, FaSearch } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import useAuth from '../../hooks/useAuth';
 import './Header.scss';
 
 const Header = () => {
+  const { user, logOut } = useAuth();
+  const navigate = useNavigate();
+  // console.log(user);
+
+  const handleLogOut = () => {
+    try {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You'll be logged out!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, Log Out!',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire(
+            'Logged Out',
+            'Thank you for being with oldschool',
+            'success'
+          );
+          logOut();
+        }
+      });
+    } catch (error) {
+      console.log(error?.message);
+    }
+    navigate('');
+  };
+
   return (
     <header>
       <span id="menu-bar">
@@ -28,13 +61,28 @@ const Header = () => {
 
       <div id="center">
         <span id="brmmm-logo">
-          <Link to={'/'}>brmmm</Link>
+          <Link to={'/'}>....</Link>
         </span>
       </div>
 
       <div id="right">
+        {user && user ? (
+          <>
+            <button onClick={handleLogOut}>Logout</button>
+            <Toaster position="top-right" reverseOrder={false} />
+          </>
+        ) : (
+          <div id="user-auth">
+            <Link to={'/login'}>Login</Link>
+            <Link to={'/register'}>Register</Link>
+          </div>
+        )}
+        {/* <div id="user-auth">
+          <Link to={'/login'}>Login</Link>
+          <Link to={'/register'}>Register</Link>
+        </div> */}
         <div id="search">
-          <input type="search" />
+          {/* <input type="search" /> */}
           <FaSearch size={18} />
         </div>
         <FaCartPlus size={20} />

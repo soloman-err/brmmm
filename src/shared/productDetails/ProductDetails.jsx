@@ -1,17 +1,32 @@
 // import { Helmet } from "react-helmet";
 import './ProductDetails.scss';
 
-import { Link } from 'react-router-dom';
+import { Toaster, toast } from 'react-hot-toast';
+import { Link, useNavigate } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 import ProductCard from '../productCard/productCard';
 
 const ProductDetails = () => {
+  const { user } = useAuth();
+  const navigate = useNavigate();
+
+  const handleAddToCart = () => {
+    if (!user) {
+      navigate('/login');
+    } else {
+      toast.success('Added to cart', {
+        style: {
+          borderRadius: '2px',
+        },
+      });
+    }
+  };
+
   return (
     <div id="product-details-root">
       {/* <Helmet><title>Product Details | brmmm</title></Helmet> */}
       <section id="product-details-section">
-        <div>
-          <img src="https://dummyimage.com/600x400/000/111" alt="item-card" />
-        </div>
+        <img src="https://dummyimage.com/600x500/000/111" alt="item-card" />
 
         <div id="product-info">
           <div>
@@ -36,13 +51,18 @@ const ProductDetails = () => {
             <Link to={'/buy-now/payment'}>
               <button style={{ backgroundColor: 'red' }}>Buy Now</button>
             </Link>
-            <Link to={'/cart'}>
-              <button style={{ backgroundColor: 'orange' }}>Add To Cart</button>
+            <Link>
+              <button
+                onClick={handleAddToCart}
+                style={{ backgroundColor: 'orange' }}
+              >
+                Add To Cart
+              </button>
             </Link>
+            <Toaster position="top-right" reverseOrder={false} />
           </div>
         </div>
       </section>
-
       <section id="suggested-section">
         <h4>You might also like</h4>
         <div id="product-card-container">

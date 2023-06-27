@@ -4,12 +4,15 @@ import { FaBars, FaCartPlus, FaSearch } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useAuth from '../../hooks/useAuth';
+import useCart from '../../hooks/useCart';
 import './Header.scss';
 
 const Header = () => {
   const { user, logOut } = useAuth();
+  const [cart] = useCart();
   const navigate = useNavigate();
   // console.log(user);
+  
 
   const handleLogOut = () => {
     try {
@@ -70,7 +73,7 @@ const Header = () => {
           <>
             <button onClick={handleLogOut}>Logout</button>
             <Toaster position="top-right" reverseOrder={false} />
-            <Link to={"/dashboard/myprofile"}>Dashboard</Link>
+            <Link to={'/dashboard/myprofile'}>Dashboard</Link>
           </>
         ) : (
           <div id="user-auth">
@@ -86,9 +89,13 @@ const Header = () => {
           {/* <input type="search" /> */}
           <FaSearch size={18} />
         </div>
-       l<Link to={'carts'}>
-          <FaCartPlus size={20} />
-       </Link>
+        l
+        <Link to={'carts'}>
+          <div id="cart">
+            <FaCartPlus size={20} />
+            <sup id="cart-items"> {cart?.length}</sup>
+          </div>
+        </Link>
         {/* <FaUser size={20} /> */}
       </div>
     </header>

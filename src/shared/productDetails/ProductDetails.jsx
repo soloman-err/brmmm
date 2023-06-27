@@ -1,21 +1,34 @@
 // import { Helmet } from "react-helmet";
 import './ProductDetails.scss';
 
+import { useQuery } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
 import { Toaster, toast } from 'react-hot-toast';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useAuth from '../../hooks/useAuth';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 import ProductCard from '../productCard/ProductCard';
 
 const ProductDetails = () => {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
   const navigate = useNavigate();
-  
+  const [axiosSecure]= useAxiosSecure();
   const params = useParams()
   const id = params.id.toString()
   const [product, setProduct]= useState(null)
-  // console.log(product);
+  
+  // refetch:
+  const { refetch } = useQuery({
+    queryKey: ['carts', user?.email],
+    enabled:
+      !loading && !!user?.email && !!localStorage.getItem('access-token'),
+    queryFn: async () => {
+      const res = await axiosSecure(`/carts?email=${user?.email}`);
+      return res.data;
+    },
+  });
+
 
  useEffect(()=>{
   const fetchedProduct = async () => {
@@ -52,6 +65,7 @@ const ProductDetails = () => {
       .then((data)=>{
         if(data.insertedId){
           console.log(data);
+          refetch();
           toast.success(`${product?.name} - Added to cart!`)
         }
       })

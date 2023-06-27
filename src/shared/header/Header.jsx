@@ -34,7 +34,7 @@ const Header = () => {
     } catch (error) {
       console.log(error?.message);
     }
-    navigate('');
+    navigate('/');
   };
 
   return (
@@ -70,6 +70,7 @@ const Header = () => {
           <>
             <button onClick={handleLogOut}>Logout</button>
             <Toaster position="top-right" reverseOrder={false} />
+            <Link to={"/dashboard/myprofile"}>Dashboard</Link>
           </>
         ) : (
           <div id="user-auth">
@@ -85,7 +86,9 @@ const Header = () => {
           {/* <input type="search" /> */}
           <FaSearch size={18} />
         </div>
-        <FaCartPlus size={20} />
+       l<Link to={'cart'}>
+          <FaCartPlus size={20} />
+       </Link>
         {/* <FaUser size={20} /> */}
       </div>
     </header>

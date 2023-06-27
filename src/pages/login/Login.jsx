@@ -63,7 +63,6 @@ const Login = () => {
           <input
             type="text"
             name="email"
-            id=""
             required
             placeholder="Enter your email"
           />
@@ -73,7 +72,6 @@ const Login = () => {
           <input
             type="password"
             name="password"
-            id=""
             required
             placeholder="Enter your password"
           />

@@ -1,19 +1,9 @@
-import { useEffect, useState } from 'react';
-import ProductCard from '../../../shared/productCard/productCard';
+import useProducts from '../../../hooks/useProducts';
+import ProductCard from '../../../shared/productCard/ProductCard';
 import './ShopItems.scss';
 
 const ShopItems = () => {
-  const [products, setProducts] = useState();
-
-  useEffect(() => {
-    fetch('http://localhost:2000/products')
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log(data);
-        setProducts(data);
-      });
-  }, []);
-
+  const [products] = useProducts()
   
   return (
     <div id="shop">
@@ -26,3 +16,4 @@ const ShopItems = () => {
 };
 
 export default ShopItems;
+

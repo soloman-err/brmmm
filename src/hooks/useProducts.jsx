@@ -1,19 +1,15 @@
-import { useContext, useEffect } from 'react';
+import { useQuery } from "@tanstack/react-query";
 
 const useProducts = () => {
-  const [products, setProducts] = useContext();
+  const {data: products= []}= useQuery({
+    queryKey: ['products'],
+    queryFn: async()=>{
+      const res = await fetch('http://localhost:2000/products')
+      return res.json();
+    }
+  })
 
-  useEffect(() => {
-    fetch('http://localhost:2000/products')
-      .then((res) => {
-        console.log(res);
-      })
-      .then((error) => {
-        console.log(error);
-      });
-  }, []);
-
-  return <div></div>;
+  return [products];
 };
 
 export default useProducts;

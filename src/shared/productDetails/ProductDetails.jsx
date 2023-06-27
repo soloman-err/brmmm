@@ -15,7 +15,7 @@ const ProductDetails = () => {
   const params = useParams()
   const id = params.id.toString()
   const [product, setProduct]= useState(null)
-  console.log(product);
+  // console.log(product);
 
  useEffect(()=>{
   const fetchedProduct = async () => {
@@ -30,6 +30,7 @@ const ProductDetails = () => {
   fetchedProduct();
  },[id])
 
+  //  Add to cart:
   const handleAddToCart = (item) => {
     console.log(item);
     if(user && user.email){

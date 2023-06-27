@@ -1,7 +1,7 @@
 import useCart from '../../hooks/useCart';
-import './Cart.scss';
+import './Carts.scss';
 
-const Cart = () => {
+const Carts = () => {
     const [cart, refetch]= useCart()
     console.log(cart);
 
@@ -12,4 +12,4 @@ const Cart = () => {
     );
 };
 
-export default Cart;
+export default Carts;

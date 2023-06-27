@@ -1,9 +1,9 @@
 import { createBrowserRouter } from 'react-router-dom';
 import RootLayout from '../layouts/RootLayout';
 import DashboardLayout from '../layouts/dashboardLayout/DashboardLayout';
-import Cart from '../pages/Cart/Cart';
 import Blogs from '../pages/blogs/Blogs';
 import BuyNow from '../pages/buyNow/BuyNow';
+import Carts from '../pages/carts/Carts';
 import MyProfile from '../pages/dashboard/myProfile/MyProfile';
 import Home from '../pages/home/home/Home';
 import Login from '../pages/login/Login';
@@ -21,7 +21,7 @@ const router = createBrowserRouter([
       { path: 'blogs', element: <Blogs/> },
       { path: 'product-details/:id', element: <ProductDetails /> },
       { path: 'buy-now/payment', element: <BuyNow /> },
-      { path: 'cart', element: <Cart /> },
+      { path: 'carts', element: <Carts /> },
       { path: 'login', element: <Login /> },
       { path: 'register', element: <Register /> },
     ],

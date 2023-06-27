@@ -86,7 +86,7 @@ const Header = () => {
           {/* <input type="search" /> */}
           <FaSearch size={18} />
         </div>
-       l<Link to={'cart'}>
+       l<Link to={'carts'}>
           <FaCartPlus size={20} />
        </Link>
         {/* <FaUser size={20} /> */}

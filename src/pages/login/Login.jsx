@@ -48,6 +48,7 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
+        navigate(from, { replace: true });
       })
       .then((error) => {
         console.log('Sign in error:', error);

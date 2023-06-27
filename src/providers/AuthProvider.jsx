@@ -1,6 +1,5 @@
 import axios from 'axios';
 import {
-  FacebookAuthProvider,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   getAuth,
@@ -8,7 +7,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
-  updateProfile,
+  updateProfile
 } from 'firebase/auth';
 import { createContext, useEffect, useState } from 'react';
 import app from '../firebase/firebase.config';
@@ -22,7 +21,7 @@ const AuthProvider = ({ children }) => {
 
   // Providers---------------------->>>>>>
   const googleProvider = new GoogleAuthProvider();
-  const facebookProfiler = new FacebookAuthProvider();
+  // const facebookProfiler = new FacebookAuthProvider();
 
   // Create a new user-------------->>>>>>
   const createUser = (email, password) => {
@@ -49,38 +48,38 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, googleProvider);
   };
 
+    // Logout the user----------------->>>>>>
+    const logOut = async () => {
+      setLoading(true);
+      await signOut(auth)
+      setLoading(false);
+    };
+  
+
   // Observe user state------------->>>>>>
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
+      console.log(currentUser);
 
-      if (currentUser && currentUser?.email) {
-        axios
-          .post(`http://localhost:2000/jwt`, {
-            email: createUser?.email,
+      if (currentUser) {
+        try{
+          const res = await axios.post('http://localhost:2000/jwt', {
+            email: currentUser.email
           })
-          .then((data) => {
-            localStorage.setItem('access-token', data.data);
-            setLoading(false);
-          })
-          .catch((error) => {
-            console.log('Unauthorized authentication', error);
-            setLoading(false);
-          });
+          localStorage.setItem('access-token', res.data);
+          setLoading(false);
+        }catch(error){
+          console.log('Unauthorized access', error);
+          await logOut()
+        }
       } else {
         localStorage.removeItem('access-token');
+        setLoading(false);
       }
     });
-    return () => {
-      return unsubscribe();
-    };
+    return () => unsubscribe()
   }, []);
-
-  // Logout the user----------------->>>>>>
-  const logOut = () => {
-    setLoading(true);
-    return signOut(auth);
-  };
 
   // Authentication information----->>>>>>>
   const authInfo = {

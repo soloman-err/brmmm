@@ -1,5 +1,6 @@
 section {
-  margin: 50px auto;
+  // margin: 50px auto;
+  width: 100%;
 
   #cart-pay{
     display: flex;
@@ -13,18 +14,23 @@ section {
         padding: 5px 10px;
         height: 35px;
         text-transform: uppercase;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
         background-color: red;
     }
   }
 
   table {
     width: 100%;
-    background-color: #444;
     border-collapse: collapse;
     overflow-x: auto;
+    border-radius: 3px;
+    overflow: hidden;
+    background-color: rgb(240, 243, 245);
 
     thead {
-      background-color: darkolivegreen;
+
     }
 
     th {
@@ -52,12 +58,11 @@ section {
         }
 
         #btn-group{
-            display: flex;
-            gap: 25px;
+          text-align: center;
 
-            #btn-edit{
-                color: rgb(11, 60, 134);
-            }
+            // #btn-edit{
+            //     color: rgb(11, 60, 134);
+            // }
 
             #btn-del{
                 color: rgb(209, 24, 24);

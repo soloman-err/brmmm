@@ -1,9 +1,10 @@
-import { FaEdit, FaTrash } from 'react-icons/fa';
+import { FaTrash } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useCart from '../../hooks/useCart';
-import './Carts.scss';
+import './Cart.scss';
 
-const Carts = () => {
+const Cart = () => {
   const [cart, refetch] = useCart();
   //   console.log(cart);
 
@@ -43,7 +44,9 @@ const Carts = () => {
     <section>
       <div id="cart-pay">
         <h3>Total Amount: ${totalPrice}</h3>
+        <Link to={'/dashboard/payment'}>
         <button>Pay Now</button>
+        </Link>
       </div>
       <table>
         <thead>
@@ -71,9 +74,9 @@ const Carts = () => {
               <td>$ {product?.price}</td>
               <td>
                 <div id="btn-group">
-                  <button id="btn-edit">
+                  {/* <button id="btn-edit">
                     <FaEdit size={20} />
-                  </button>
+                  </button> */}
                   <button id="btn-del" onClick={() => handleDelete(product)}>
                     <FaTrash size={20} />
                   </button>
@@ -87,4 +90,4 @@ const Carts = () => {
   );
 };
 
-export default Carts;
+export default Cart;

@@ -3,7 +3,7 @@ import RootLayout from '../layouts/RootLayout';
 import DashboardLayout from '../layouts/dashboardLayout/DashboardLayout';
 import Blogs from '../pages/blogs/Blogs';
 import BuyNow from '../pages/buyNow/BuyNow';
-import Carts from '../pages/carts/Carts';
+import Cart from '../pages/cart/Cart';
 import MyProfile from '../pages/dashboard/myProfile/MyProfile';
 import Home from '../pages/home/home/Home';
 import Login from '../pages/login/Login';
@@ -17,11 +17,10 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       { path: '/', element: <Home /> },
-      { path: 'popular', element: <Popular/> },
-      { path: 'blogs', element: <Blogs/> },
+      { path: 'popular', element: <Popular /> },
+      { path: 'blogs', element: <Blogs /> },
       { path: 'product-details/:id', element: <ProductDetails /> },
       { path: 'buy-now/payment', element: <BuyNow /> },
-      { path: 'carts', element: <Carts /> },
       { path: 'login', element: <Login /> },
       { path: 'register', element: <Register /> },
     ],
@@ -29,7 +28,10 @@ const router = createBrowserRouter([
   {
     path: 'dashboard',
     element: <DashboardLayout />,
-    children: [{ path: 'profile', element: <MyProfile /> }],
+    children: [
+      { path: 'profile', element: <MyProfile /> },
+      { path: 'cart', element: <Cart /> },
+    ],
   },
 ]);
 

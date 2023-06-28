@@ -56,7 +56,7 @@ const Header = () => {
         </div>
 
         <nav>
-          <Link to={''}>Home</Link>
+          <Link to={'/'}>Home</Link>
           <Link to={'/popular'}>Popular</Link>
           <Link to={'/blogs'}>Blogs</Link>
         </nav>
@@ -89,8 +89,8 @@ const Header = () => {
           {/* <input type="search" /> */}
           <FaSearch size={18} />
         </div>
-        l
-        <Link to={'carts'}>
+        
+        <Link to={'/dashboard/cart'}>
           <div id="cart">
             <FaCartPlus size={20} />
             <sup id="cart-items"> {cart?.length}</sup>

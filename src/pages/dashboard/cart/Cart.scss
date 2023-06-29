@@ -1,0 +1,73 @@
+section {
+  width: 100%;
+  padding: 0 5px;
+
+  #cart-pay {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+
+    button {
+      font-size: 1rem;
+      font-weight: bold;
+      padding: 5px 10px;
+      height: 35px;
+      text-transform: uppercase;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      background-color: red;
+    }
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 3px;
+    overflow: hidden;
+    background-color: rgb(247, 249, 250);
+
+    th {
+      padding: 10px;
+    }
+
+    tr {
+      border: 2px solid #555;
+    }
+
+    tbody {
+      td {
+        border: 2px solid #555;
+        padding: 0 10px;
+
+        img {
+          width: 200px;
+        }
+
+        button {
+          background-color: transparent;
+          border: transparent;
+        }
+
+        #btn-group {
+          text-align: center;
+
+          // #btn-edit{
+          //     color: rgb(11, 60, 134);
+          // }
+
+          #btn-del {
+            color: rgb(209, 24, 24);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  section {
+    overflow-x: scroll;
+  }
+}

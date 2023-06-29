@@ -3,8 +3,9 @@ import RootLayout from '../layouts/RootLayout';
 import DashboardLayout from '../layouts/dashboardLayout/DashboardLayout';
 import Blogs from '../pages/blogs/Blogs';
 import BuyNow from '../pages/buyNow/BuyNow';
-import Cart from '../pages/cart/Cart';
+import Cart from '../pages/dashboard/cart/Cart';
 import MyProfile from '../pages/dashboard/myProfile/MyProfile';
+import Payment from '../pages/dashboard/payment/Payment';
 import Home from '../pages/home/home/Home';
 import Login from '../pages/login/Login';
 import Popular from '../pages/popular/Popular';
@@ -31,6 +32,7 @@ const router = createBrowserRouter([
     children: [
       { path: 'profile', element: <MyProfile /> },
       { path: 'cart', element: <Cart /> },
+      { path: 'payment', element: <Payment /> },
     ],
   },
 ]);

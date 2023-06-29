@@ -48,7 +48,7 @@ const ProductDetails = () => {
     console.log(item);
     if(user && user.email){
       const orderedItem = {
-        menuItemId: product?._id,
+        productId: product?._id,
         name: product?.name,
         image: product?.image,
         price: product?.price,

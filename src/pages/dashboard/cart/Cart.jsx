@@ -1,16 +1,16 @@
 import { FaTrash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import useCart from '../../hooks/useCart';
+import useCart from '../../../hooks/useCart';
 import './Cart.scss';
 
 const Cart = () => {
   const [cart, refetch] = useCart();
   //   console.log(cart);
 
-    //  reduce:
-    const total = cart.reduce((sum, product)=> product?.price + sum, 0)
-    const totalPrice = parseFloat(total.toFixed(2));
+  //  reduce:
+  const total = cart.reduce((sum, product) => product?.price + sum, 0);
+  const totalPrice = parseFloat(total.toFixed(2));
 
   // Delete a product:
   const handleDelete = (product) => {
@@ -45,7 +45,7 @@ const Cart = () => {
       <div id="cart-pay">
         <h3>Total Amount: ${totalPrice}</h3>
         <Link to={'/dashboard/payment'}>
-        <button>Pay Now</button>
+          <button>Checkout</button>
         </Link>
       </div>
       <table>

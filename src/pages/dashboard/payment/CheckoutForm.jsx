@@ -18,7 +18,7 @@ const CheckoutForm = ({ cart, price }) => {
   useEffect(() => {
     if (price > 0) {
       axiosSecure.post('/create-payment-intent', { price }).then((res) => {
-        console.log(res.data.clientSecret);
+        // console.log(res.data.clientSecret);
         setClientSecret(res.data.clientSecret);
       });
     }
@@ -74,6 +74,8 @@ const CheckoutForm = ({ cart, price }) => {
     if (paymentIntent?.status === 'succeeded') {
       const transactionId = paymentIntent.id;
       setTransactionId(transactionId);
+      toast.success('Payment success!');
+
 
       const payment = {
         email: user?.email,
@@ -89,7 +91,7 @@ const CheckoutForm = ({ cart, price }) => {
       axiosSecure.post('/payments', payment).then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {
-          toast.success('Payment success!');
+          console.log('Payment success!');
         }
       });
     }

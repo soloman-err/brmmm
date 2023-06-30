@@ -4,8 +4,8 @@ import DashboardLayout from '../layouts/dashboardLayout/DashboardLayout';
 import Blogs from '../pages/blogs/Blogs';
 import BuyNow from '../pages/buyNow/BuyNow';
 import Cart from '../pages/dashboard/cart/Cart';
-import MyProfile from '../pages/dashboard/myProfile/MyProfile';
 import Payment from '../pages/dashboard/payment/Payment';
+import Profile from '../pages/dashboard/profile/Profile';
 import Home from '../pages/home/home/Home';
 import Login from '../pages/login/Login';
 import Popular from '../pages/popular/Popular';
@@ -30,7 +30,7 @@ const router = createBrowserRouter([
     path: 'dashboard',
     element: <DashboardLayout />,
     children: [
-      { path: 'profile', element: <MyProfile /> },
+      { path: 'profile', element: <Profile /> },
       { path: 'cart', element: <Cart /> },
       { path: 'payment', element: <Payment /> },
     ],

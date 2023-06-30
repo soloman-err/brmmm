@@ -1,9 +1,9 @@
-import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useAuth from '../../hooks/useAuth';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
+import './Register.scss';
 
 const Register = () => {
   const [axiosSecure] = useAxiosSecure();
@@ -52,9 +52,9 @@ const Register = () => {
   };
 
   return (
-    <section>
+    <section id='form-container'>
       <form id="form" onSubmit={handleSubmit(onSubmit)}>
-        <h4>Please Register</h4>
+        <h3>Please Register</h3>
         <div className="form-control">
           <label>Name</label>
           <input
@@ -110,18 +110,9 @@ const Register = () => {
           />
         </div>
 
-        <div className="form-control">
+        <div id='register-btn' className="form-control">
           <button type="submit">Register</button>
         </div>
-
-        {/* <div id="social-login">
-          <button onClick={handleFacebookLogin}>
-            <FaFacebook />
-          </button>
-          <button onClick={handleGoogleLogin}>
-            <FaGoogle />
-          </button>
-        </div> */}
       </form>
     </section>
   );

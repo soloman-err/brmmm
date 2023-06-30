@@ -71,9 +71,9 @@ const Header = () => {
       <div id="right">
         {user && user ? (
           <>
-            <button onClick={handleLogOut}>Logout</button>
+            <Link onClick={handleLogOut}>Logout</Link>
             <Toaster position="top-right" reverseOrder={false} />
-            <Link to={'/dashboard/myprofile'}>Dashboard</Link>
+            <Link to={'/dashboard/profile'}>Dashboard</Link>
           </>
         ) : (
           <div id="user-auth">

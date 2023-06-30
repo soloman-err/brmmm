@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { FaFacebook, FaGoogle } from 'react-icons/fa';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../providers/AuthProvider';
@@ -56,9 +55,9 @@ const Login = () => {
   };
 
   return (
-    <section>
+    <section id='form-container'>
       <form id="form" onSubmit={handleLogin}>
-        <h4>Please Login</h4>
+        <h3>Please Login</h3>
         <div className="form-control">
           <label>Email</label>
           <input
@@ -78,19 +77,22 @@ const Login = () => {
           />
         </div>
 
-        <div className="form-control">
+        <div id="login-btn" className="form-control">
           <button type="submit">Login</button>
         </div>
-
-        <div id="social-login">
-          <button onClick={handleGoogleLogin}>
-            <FaGoogle />
-          </button>
-          <button onClick={handleFacebookLogin}>
-            <FaFacebook />
-          </button>
-        </div>
       </form>
+      
+      <div id="social-login">
+        <button id="google-login" onClick={handleGoogleLogin}>
+          <img src="/google.png" alt="" />
+          <span>Google</span>
+        </button>
+
+        <button id="facebook-login" onClick={handleFacebookLogin}>
+          <img src="/facebook.png" alt="" />
+          <span>Facebook</span>
+        </button>
+      </div>
     </section>
   );
 };

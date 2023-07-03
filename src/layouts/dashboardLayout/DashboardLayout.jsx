@@ -67,10 +67,18 @@ const DashboardLayout = () => {
 
           {/* Default */}
           <ul>
-            <li>Home</li>
-            <li>Category</li>
-            <li>Shop</li>
-            <li>Contact</li>
+            <li>
+              <Link to={'/'}>Home</Link>
+            </li>
+            <li>
+              <Link to={'/dashboard/categories'}>Categories</Link>
+            </li>
+            <li>
+              <Link to={'/dashboard/shop'}>Shop</Link>
+            </li>
+            <li>
+              <Link to={'/dashboard/contact'}>Contact</Link>
+            </li>
           </ul>
         </aside>
         <Outlet />

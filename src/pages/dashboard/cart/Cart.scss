@@ -8,16 +8,32 @@ section {
     align-items: center;
     padding: 5px 0;
 
-    button {
-      font-size: 1rem;
-      font-weight: bold;
-      padding: 5px 10px;
-      height: 35px;
-      text-transform: uppercase;
-      color: #fff;
-      border: none;
-      border-radius: 3px;
-      background-color: red;
+    #pay-btn-group {
+      display: flex;
+      gap: 10px;
+
+      #clear-cart {
+        font-size: 14px;
+        border-radius: 3px;
+        padding: 5px 10px;
+        border: none;
+        color: #fff;
+        font-weight: bold;
+        text-transform: uppercase;
+        background-color: rgb(206, 1, 1);
+      }
+
+      #proceed-payment {
+        font-size: 14px;
+        font-weight: bold;
+        padding: 5px 10px;
+        height: 35px;
+        text-transform: uppercase;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        background-color: rgb(5, 119, 226);
+      }
     }
   }
 

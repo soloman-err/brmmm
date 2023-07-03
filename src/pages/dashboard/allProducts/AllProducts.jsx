@@ -4,7 +4,8 @@ import useProducts from '../../../hooks/useProducts';
 import './AllProducts.scss';
 
 const AllProducts = () => {
-    const [products, refetch] = useProducts();
+  const [products, refetch] = useProducts();
+  console.log(products);
 
   // Delete a product:
   const handleDelete = (product) => {
@@ -41,9 +42,10 @@ const AllProducts = () => {
         <thead>
           <tr>
             <th>#</th>
-            <th>Car</th>
             <th>Name</th>
             <th>Price</th>
+            <th>Rating</th>
+            <th>Quantity</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -53,14 +55,11 @@ const AllProducts = () => {
             <tr key={product?._id}>
               <th>{index + 1}</th>
               <td>
-                <div>
-                  <img src={product?.image} alt="product-image" />
-                </div>
+                <h3>{product?.productsTitle}</h3>
               </td>
-              <td>
-                <h3>{product?.name}</h3>
-              </td>
-              <td>$ {product?.price}</td>
+              <td className='centered'>$ {product?.price}</td>
+              <td className='centered'>{product?.rating}</td>
+              <td className='centered'>{product?.quantity}</td>
               <td>
                 <div id="btn-group">
                   <button id="btn-edit">

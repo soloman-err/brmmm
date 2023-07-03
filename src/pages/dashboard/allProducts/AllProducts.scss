@@ -1,6 +1,10 @@
 section {
   table {
     tbody {
+      .centered {
+        text-align: center;
+      }
+
       #btn-group {
         display: flex;
         flex-direction: row;

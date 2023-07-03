@@ -1,4 +1,4 @@
-import { FaTrash } from 'react-icons/fa';
+import { FaTrash, FaTrashAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useCart from '../../../hooks/useCart';
@@ -6,11 +6,14 @@ import './Cart.scss';
 
 const Cart = () => {
   const [cart, refetch] = useCart();
-  //   console.log(cart);
+  console.log(cart);
 
   //  reduce:
-  const total = cart.reduce((sum, product) => product?.price + sum, 0);
-  const totalPrice = parseFloat(total.toFixed(2));
+  const total = cart.reduce(
+    (sum, product) => parseFloat(product?.price) + sum,
+    0
+  );
+  const totalPrice = total?.toFixed(2);
 
   // Delete a product:
   const handleDelete = (product) => {
@@ -40,21 +43,62 @@ const Cart = () => {
     });
   };
 
+  // Clear Cart:
+  const handleClearCart = () => {
+    Swal.fire({
+      title: `Want to Clear Cart?`,
+      //   text: "You won't be able to revert this product!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d4',
+      cancelButtonColor: '#d33e',
+      confirmButtonText: 'Delete',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:2000/carts`, {
+          method: 'DELETE',
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              refetch();
+              Swal.fire('', 'Cart has been cleared!', 'success');
+            }
+          });
+      }
+    });
+  };
+
   return (
     <section>
       <div id="cart-pay">
         <h3>Total Amount: ${totalPrice}</h3>
-        <Link to={'/dashboard/payment'}>
-          <button>Checkout</button>
-        </Link>
+        <div id="pay-btn-group">
+          {cart.length > 0 ? (
+            <button onClick={handleClearCart} id="clear-cart">
+              Clear cart <FaTrashAlt />
+            </button>
+          ) : (
+            <button onClick={handleClearCart} id="clear-cart" disabled>
+              Cart is empty <FaTrashAlt />
+            </button>
+          )}
+          
+          {cart.length > 0 && (
+            <Link to={'/dashboard/payment'}>
+              <button id="proceed-payment">Proceed Checkout</button>
+            </Link>
+          )}
+        </div>
       </div>
       <table>
         <thead>
           <tr>
             <th>#</th>
-            <th>Car</th>
+            {/* <th>Car</th> */}
             <th>Name</th>
             <th>Price</th>
+            {/* <th>Quantity</th> */}
             <th>Action</th>
           </tr>
         </thead>
@@ -63,15 +107,16 @@ const Cart = () => {
           {cart.map((product, index) => (
             <tr key={product?._id}>
               <th>{index + 1}</th>
-              <td>
+              {/* <td>
                 <div>
                   <img src={product?.image} alt="product-image" />
                 </div>
-              </td>
+              </td> */}
               <td>
                 <h3>{product?.name}</h3>
               </td>
               <td>$ {product?.price}</td>
+              {/* <td>{product?.quantity}</td> */}
               <td>
                 <div id="btn-group">
                   {/* <button id="btn-edit">

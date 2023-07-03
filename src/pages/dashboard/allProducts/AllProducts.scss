@@ -1,0 +1,11 @@
+section {
+  table {
+    tbody {
+      #btn-group {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+      }
+    }
+  }
+}

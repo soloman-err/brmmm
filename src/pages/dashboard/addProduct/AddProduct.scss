@@ -1,0 +1,34 @@
+form {
+  margin: 0 !important;
+
+  .form-control {
+    .label-text {
+      font-size: 12px;
+    }
+
+    input {
+      font-size: 14px;
+    }
+  }
+
+  select {
+    font-size: 14px;
+  }
+
+  textarea {
+    width: 100%;
+    border: none;
+    // background-color: transparent;
+  }
+
+  #publish-btn {
+    button {
+      width: 100%;
+      border: none;
+      padding: 5px;
+      border-radius: 2px;
+      background-color: rgb(29, 127, 255);
+      text-transform: uppercase;
+    }
+  }
+}

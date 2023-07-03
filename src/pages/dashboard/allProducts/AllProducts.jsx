@@ -1,9 +1,10 @@
-import { FaTrash } from 'react-icons/fa';
+import { FaEdit, FaTrash } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import useProducts from '../../../hooks/useProducts';
+import './AllProducts.scss';
 
 const AllProducts = () => {
-    const [products] = useProducts();
+    const [products, refetch] = useProducts();
 
   // Delete a product:
   const handleDelete = (product) => {
@@ -19,7 +20,7 @@ const AllProducts = () => {
       confirmButtonText: 'Delete',
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:2000/carts/${product?._id}`, {
+        fetch(`http://localhost:2000/products/${product?._id}`, {
           method: 'DELETE',
         })
           .then((res) => res.json())
@@ -35,6 +36,7 @@ const AllProducts = () => {
 
   return (
     <section>
+      <h2>All Products</h2>
       <table>
         <thead>
           <tr>
@@ -61,11 +63,11 @@ const AllProducts = () => {
               <td>$ {product?.price}</td>
               <td>
                 <div id="btn-group">
-                  {/* <button id="btn-edit">
-                    <FaEdit size={20} />
-                  </button> */}
+                  <button id="btn-edit">
+                    <FaEdit size={16} />
+                  </button>
                   <button id="btn-del" onClick={() => handleDelete(product)}>
-                    <FaTrash size={20} />
+                    <FaTrash size={16} />
                   </button>
                 </div>
               </td>

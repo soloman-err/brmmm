@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 const useProducts = () => {
-  const {data: products= []}= useQuery({
+  const {data: products= [], refetch}= useQuery({
     queryKey: ['products'],
     queryFn: async()=>{
       const res = await fetch('http://localhost:2000/products')
@@ -9,7 +9,7 @@ const useProducts = () => {
     }
   })
 
-  return [products];
+  return [products, refetch];
 };
 
 export default useProducts;

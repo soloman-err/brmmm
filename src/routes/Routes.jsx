@@ -3,6 +3,7 @@ import RootLayout from '../layouts/RootLayout';
 import DashboardLayout from '../layouts/dashboardLayout/DashboardLayout';
 import Blogs from '../pages/blogs/Blogs';
 import BuyNow from '../pages/buyNow/BuyNow';
+import AddProduct from '../pages/dashboard/addProduct/AddProduct';
 import AllProducts from '../pages/dashboard/allProducts/AllProducts';
 import AllUsers from '../pages/dashboard/allUsers/AllUsers';
 import Cart from '../pages/dashboard/cart/Cart';
@@ -36,6 +37,7 @@ const router = createBrowserRouter([
       { path: 'profile', element: <Profile /> },
       { path: 'all-users', element: <AllUsers /> },
       { path: 'all-products', element: <AllProducts /> },
+      { path: 'add-product', element: <AddProduct /> },
       { path: 'settings', element: <Settings /> },
       { path: 'cart', element: <Cart /> },
       { path: 'payment', element: <Payment /> },

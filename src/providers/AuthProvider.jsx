@@ -25,6 +25,7 @@ const AuthProvider = ({ children }) => {
 
   // Create a new user-------------->>>>>>
   const createUser = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
@@ -78,7 +79,9 @@ const AuthProvider = ({ children }) => {
         setLoading(false);
       }
     });
-    return () => unsubscribe()
+    return () => {
+      return unsubscribe();
+    }
   }, []);
 
   // Authentication information----->>>>>>>

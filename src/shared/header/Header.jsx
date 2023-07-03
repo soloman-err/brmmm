@@ -64,7 +64,7 @@ const Header = () => {
 
       <div id="center">
         <span id="brmmm-logo">
-          <Link to={'/'}>....</Link>
+          <Link to={'/'}>brmmm</Link>
         </span>
       </div>
 

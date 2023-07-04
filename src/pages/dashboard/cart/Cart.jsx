@@ -106,14 +106,16 @@ const Cart = () => {
         <tbody>
           {cart.map((product, index) => (
             <tr key={product?._id}>
-              <th>{index + 1}</th>
+              <th>
+                <h5>{index + 1}</h5>
+              </th>
               {/* <td>
                 <div>
                   <img src={product?.image} alt="product-image" />
                 </div>
               </td> */}
               <td>
-                <h3>{product?.name}</h3>
+                <h5>{product?.productsTitle}</h5>
               </td>
               <td>$ {product?.price}</td>
               {/* <td>{product?.quantity}</td> */}
@@ -123,7 +125,7 @@ const Cart = () => {
                     <FaEdit size={20} />
                   </button> */}
                   <button id="btn-del" onClick={() => handleDelete(product)}>
-                    <FaTrash size={20} />
+                    <FaTrash size={16} />
                   </button>
                 </div>
               </td>

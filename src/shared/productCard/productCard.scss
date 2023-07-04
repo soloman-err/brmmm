@@ -1,7 +1,7 @@
 #item-card {
   display: flex;
   flex-direction: column;
-  border: 2px solid gray;
+  border: 2px solid rgb(243, 243, 243);
   border-radius: 3px;
   overflow: hidden;
 
@@ -12,9 +12,15 @@
 
   button {
     width: 100%;
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 18px;
+    font-weight: 600;
     padding: 5px 0px;
     border: none;
+    background-color: transparent;
+
+    #prod-price {
+      color: rgb(238, 163, 0);
+      font-weight: 600;
+    }
   }
 }

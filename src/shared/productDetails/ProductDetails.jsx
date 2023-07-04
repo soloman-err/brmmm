@@ -4,7 +4,8 @@ import './ProductDetails.scss';
 import { useQuery } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
 import { Toaster, toast } from 'react-hot-toast';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { FaShoppingCart } from 'react-icons/fa';
+import { useNavigate, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useAuth from '../../hooks/useAuth';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
@@ -13,11 +14,14 @@ import ProductCard from '../productCard/ProductCard';
 const ProductDetails = () => {
   const { user, loading } = useAuth();
   const navigate = useNavigate();
-  const [axiosSecure]= useAxiosSecure();
-  const params = useParams()
-  const id = params.id.toString()
-  const [product, setProduct]= useState(null)
-  
+  const [axiosSecure] = useAxiosSecure();
+  const params = useParams();
+  const id = params.id.toString();
+  const [product, setProduct] = useState(null);
+
+  console.log(product);
+  // const {productsTitle}= product;
+
   // refetch:
   const { refetch } = useQuery({
     queryKey: ['carts', user?.email],
@@ -29,103 +33,94 @@ const ProductDetails = () => {
     },
   });
 
-
- useEffect(()=>{
-  const fetchedProduct = async () => {
-    try{
-      const res = await fetch(`http://localhost:2000/products/${id}`)
-      const data = await res.json();
-      setProduct(data)
-    }catch(error){
-      console.log(error);
-    }
-  }
-  fetchedProduct();
- },[id])
+  useEffect(() => {
+    const fetchedProduct = async () => {
+      try {
+        const res = await fetch(`http://localhost:2000/products/${id}`);
+        const data = await res.json();
+        setProduct(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchedProduct();
+  }, [id]);
 
   //  Add to cart:
   const handleAddToCart = (item) => {
     console.log(item);
-    if(user && user.email){
+    if (user && user.email) {
       const orderedItem = {
         productId: product?._id,
-        name: product?.name,
-        image: product?.image,
+        productsTitle: product?.productsTitle,
+        image: product?.photoURL,
         price: product?.price,
-        email: user.email,
-      }
+        email: user?.email,
+      };
       fetch('http://localhost:2000/carts', {
         method: 'POST',
         headers: {
-          'content-type': 'application/json'
+          'content-type': 'application/json',
         },
         body: JSON.stringify(orderedItem),
       })
-      .then((res)=>res.json())
-      .then((data)=>{
-        if(data.insertedId){
-          console.log(data);
-          refetch();
-          toast.success(`${product?.name} - Added to cart!`)
-        }
-      })
-    } else{
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.insertedId) {
+            console.log(data);
+            refetch();
+            toast.success(`${product?.productsTitle} - Added to cart!`);
+          }
+        });
+    } else {
       console.log('please login to order!');
       Swal.fire({
-        title: "Please login to order the food!",
-        icon: "warning",
+        title: 'Please login to order the food!',
+        icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Login now",
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Login now',
       }).then((result) => {
         if (result.isConfirmed) {
-          navigate("/login");
+          navigate('/login');
         }
       });
     }
-
   };
 
   return (
     <div id="product-details-root">
       {/* <Helmet><title>Product Details | brmmm</title></Helmet> */}
       <section id="product-details-section">
-        <img src="https://dummyimage.com/600x500/000/111" alt="item-card" />
+        <img src={product?.photoURL} alt="item-card" />
 
         <div id="product-info">
-          <div>
-            <h3>{product?.name}</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius
-              facere assumenda ullam itaque repellendus modi et, odio maiores
-              amet nisi!
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam,
-              quis.
-            </p>
+          <div id="prod-details">
+            <h3 id="prod-title">{product?.productsTitle}</h3>
+            <p id="prod-desc">{product?.desc}</p>
 
-            <h3>$: {product?.price}</h3>
+            <h3 id="prod-price">$ {product?.price}</h3>
           </div>
 
-          <div>
-            <div></div>
-            <div></div>
+          <div id="cart-prod-quantity">
+            <p>Quantity-</p>
+            <input type="number" name="quantity" />
           </div>
+
 
           <div id="btn-container">
-            <Link to={'/buy-now/payment'}>
+            {/* <Link to={'/buy-now/payment'}>
               <button style={{ backgroundColor: 'red' }}>Buy Now</button>
-            </Link>
-            <Link>
-              <button
-                onClick={handleAddToCart}
-                style={{ backgroundColor: 'orange' }}
-              >
-                Add To Cart
-              </button>
-            </Link>
+            </Link> */}
+            <button
+              id="cart-btn"
+              onClick={handleAddToCart}
+              style={{ backgroundColor: 'orange' }}
+            >
+              Add To Cart
+              <FaShoppingCart size={16} />
+            </button>
             <Toaster position="top-right" reverseOrder={false} />
           </div>
         </div>

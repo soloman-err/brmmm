@@ -29,7 +29,7 @@ const Cart = () => {
       confirmButtonText: 'Delete',
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:2000/carts/${product?._id}`, {
+        fetch(`https://brmmm-server.vercel.app/carts/${product?._id}`, {
           method: 'DELETE',
         })
           .then((res) => res.json())
@@ -55,7 +55,7 @@ const Cart = () => {
       confirmButtonText: 'Delete',
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:2000/carts`, {
+        fetch(`https://brmmm-server.vercel.app/carts`, {
           method: 'DELETE',
         })
           .then((res) => res.json())

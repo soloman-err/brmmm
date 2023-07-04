@@ -36,7 +36,7 @@ const ProductDetails = () => {
   useEffect(() => {
     const fetchedProduct = async () => {
       try {
-        const res = await fetch(`http://localhost:2000/products/${id}`);
+        const res = await fetch(`https://brmmm-server.vercel.app/products/${id}`);
         const data = await res.json();
         setProduct(data);
       } catch (error) {
@@ -57,7 +57,7 @@ const ProductDetails = () => {
         price: product?.price,
         email: user?.email,
       };
-      fetch('http://localhost:2000/carts', {
+      fetch('https://brmmm-server.vercel.app/carts', {
         method: 'POST',
         headers: {
           'content-type': 'application/json',

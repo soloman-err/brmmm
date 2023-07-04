@@ -21,7 +21,7 @@ const AllProducts = () => {
       confirmButtonText: 'Delete',
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:2000/products/${product?._id}`, {
+        fetch(`https://brmmm-server.vercel.app/products/${product?._id}`, {
           method: 'DELETE',
         })
           .then((res) => res.json())

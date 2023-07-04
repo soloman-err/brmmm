@@ -4,7 +4,7 @@ const useProduct = (productId)=>{
     const {data: product ={}}= useQuery({
         queryKey: ['product'],
         queryFn: async ()=>{
-            const res = await fetch(`http://localhost:2000/products/${productId}`)
+            const res = await fetch(`https://brmmm-server.vercel.app/products/${productId}`)
             return res.json();
         }
     })
@@ -16,7 +16,7 @@ export default useProduct;
 // const {data: products= []}= useQuery({
 //     queryKey: ['products'],
 //     queryFn: async()=>{
-//       const res = await fetch('http://localhost:2000/products')
+//       const res = await fetch('https://brmmm-server.vercel.app/products')
 //       return res.json();
 //     }
 //   })

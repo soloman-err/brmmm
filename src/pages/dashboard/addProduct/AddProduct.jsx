@@ -30,7 +30,7 @@ const AddProduct = () => {
       desc,
     };
 
-    fetch('http://localhost:2000/addProduct', {
+    fetch('https://brmmm-server.vercel.app/addProduct', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

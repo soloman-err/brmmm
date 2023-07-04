@@ -4,7 +4,7 @@ const useProducts = () => {
   const {data: products= [], refetch}= useQuery({
     queryKey: ['products'],
     queryFn: async()=>{
-      const res = await fetch('http://localhost:2000/products')
+      const res = await fetch('https://brmmm-server.vercel.app/products')
       return res.json();
     }
   })

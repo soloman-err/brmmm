@@ -1,13 +1,13 @@
 import axios from 'axios';
 import {
-  GoogleAuthProvider,
-  createUserWithEmailAndPassword,
-  getAuth,
-  onAuthStateChanged,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-  signOut,
-  updateProfile
+    GoogleAuthProvider,
+    createUserWithEmailAndPassword,
+    getAuth,
+    onAuthStateChanged,
+    signInWithEmailAndPassword,
+    signInWithPopup,
+    signOut,
+    updateProfile
 } from 'firebase/auth';
 import { createContext, useEffect, useState } from 'react';
 import app from '../firebase/firebase.config';
@@ -65,7 +65,7 @@ const AuthProvider = ({ children }) => {
 
       if (currentUser) {
         try{
-          const res = await axios.post('http://localhost:2000/jwt', {
+          const res = await axios.post('https://brmmm-server.vercel.app/jwt', {
             email: currentUser.email
           })
           localStorage.setItem('access-token', res.data);

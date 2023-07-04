@@ -53,9 +53,11 @@ const AllProducts = () => {
         <tbody>
           {products.map((product, index) => (
             <tr key={product?._id}>
-              <th>{index + 1}</th>
+              <th>
+                <h5>{index + 1}</h5>
+              </th>
               <td>
-                <h3>{product?.productsTitle}</h3>
+                <h5>{product?.productsTitle}</h5>
               </td>
               <td className='centered'>$ {product?.price}</td>
               <td className='centered'>{product?.rating}</td>

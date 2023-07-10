@@ -1,4 +1,5 @@
-import { FaTrash, FaTrashAlt } from 'react-icons/fa';
+import { FaTrashAlt } from 'react-icons/fa';
+import { TbRefresh } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useCart from '../../../hooks/useCart';
@@ -71,32 +72,34 @@ const Cart = () => {
 
   return (
     <section>
-      <div id="cart-pay">
-        <h3>Total Amount: ${totalPrice}</h3>
+      <div id="cart-header">
+        {/* <h3>Total Amount: ${totalPrice}</h3> */}
+        <h2>Shopping Cart</h2>
         <div id="pay-btn-group">
           {cart.length > 0 ? (
             <button onClick={handleClearCart} id="clear-cart">
-              Clear cart <FaTrashAlt />
+              Clear cart <TbRefresh size={18} />
             </button>
           ) : (
             <button onClick={handleClearCart} id="clear-cart" disabled>
               Cart is empty <FaTrashAlt />
             </button>
           )}
-          
+          {/* 
           {cart.length > 0 && (
             <Link to={'/dashboard/payment'}>
               <button id="proceed-payment">Proceed Checkout</button>
             </Link>
-          )}
+          )} */}
         </div>
       </div>
+
+
+      <div id='cart-body'>
       <table>
         <thead>
           <tr>
-            <th>#</th>
-            {/* <th>Car</th> */}
-            <th>Name</th>
+            <th>Product</th>
             <th>Price</th>
             {/* <th>Quantity</th> */}
             <th>Action</th>
@@ -104,18 +107,13 @@ const Cart = () => {
         </thead>
 
         <tbody>
-          {cart.map((product, index) => (
+          {cart.map((product) => (
             <tr key={product?._id}>
-              <th>
-                <h5>{index + 1}</h5>
-              </th>
-              {/* <td>
-                <div>
-                  <img src={product?.image} alt="product-image" />
-                </div>
-              </td> */}
               <td>
-                <h5>{product?.productsTitle}</h5>
+                <div id="product-container">
+                  <img src={product?.image} alt="product-image" />
+                  <h5>{product?.productsTitle}</h5>
+                </div>
               </td>
               <td>$ {product?.price}</td>
               {/* <td>{product?.quantity}</td> */}
@@ -125,7 +123,7 @@ const Cart = () => {
                     <FaEdit size={20} />
                   </button> */}
                   <button id="btn-del" onClick={() => handleDelete(product)}>
-                    <FaTrash size={16} />
+                    <FaTrashAlt size={15} />
                   </button>
                 </div>
               </td>
@@ -133,6 +131,36 @@ const Cart = () => {
           ))}
         </tbody>
       </table>
+
+      <div id="cart-summary">
+        <div id="cart-summary-items">
+          <p className='item'>
+            <span>{cart?.length} items</span>
+            <span>${totalPrice}</span>
+          </p>
+
+          <p className='item'>
+            <span>Shipping</span>
+            <span>Free</span>
+          </p>
+        </div>
+
+        <div id="cart-summary-total">
+          <h2 className='item'>
+            <span>Total(tax incl.)</span> 
+            <span>${totalPrice}</span>
+          </h2>
+        </div>
+
+        <div id="cart-checkout">
+          {cart.length > 0 && (
+            <Link to={'/dashboard/payment'}>
+              <button id="proceed-payment">Proceed Checkout</button>
+            </Link>
+          )} 
+        </div>
+      </div>
+      </div>
     </section>
   );
 };

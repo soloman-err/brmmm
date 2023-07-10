@@ -75,7 +75,7 @@ const ProductDetails = () => {
     } else {
       console.log('please login to order!');
       Swal.fire({
-        title: 'Please login to order the food!',
+        title: 'Please login to order!',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',

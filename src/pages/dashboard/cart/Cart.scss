@@ -2,7 +2,7 @@ section {
   width: 100%;
   padding: 0 5px;
 
-  #cart-pay {
+  #cart-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -21,18 +21,9 @@ section {
         font-weight: bold;
         text-transform: uppercase;
         background-color: rgb(206, 1, 1);
-      }
-
-      #proceed-payment {
-        font-size: 14px;
-        font-weight: bold;
-        padding: 5px 10px;
-        height: 35px;
-        text-transform: uppercase;
-        color: #fff;
-        border: none;
-        border-radius: 3px;
-        background-color: rgb(5, 119, 226);
+        align-items: center;
+        display: flex;
+        gap: 3px;
       }
     }
   }
@@ -42,23 +33,31 @@ section {
     border-collapse: collapse;
     border-radius: 3px;
     overflow: hidden;
-    background-color: rgb(247, 249, 250);
+    // background-color: rgb(247, 249, 250);
 
     th {
       padding: 10px;
     }
 
     tr {
-      border: 2px solid #555;
+      border: 1px solid #e0e0e0;
+      border-left: none;
+      border-right: none;
+      text-align: center;
     }
 
     tbody {
       td {
-        border: 2px solid #555;
         padding: 0 10px;
 
-        img {
-          width: 200px;
+        #product-container {
+          display: flex;
+          align-items: center;
+
+          img {
+            width: 150px;
+            height: 100px;
+          }
         }
 
         button {
@@ -80,10 +79,52 @@ section {
       }
     }
   }
+
+  #cart-summary {
+    border: 1px solid #eeecec;
+    padding: 10px;
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    #cart-checkout {
+      button {
+        width: 100%;
+        border: none;
+        padding: 10px;
+        font-size: 1rem;
+        font-weight: bold;
+        color: white;
+        background-color: rgb(36, 146, 236);
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 768px) {
   section {
     overflow-x: scroll;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  section {
+    overflow-x: scroll;
+
+    table {
+      width: 70%;
+    }
+
+    #cart-body {
+      display: flex;
+      gap: 20px;
+
+      #cart-summary {
+        width: 30%;
+        height: fit-content;
+      }
+    }
   }
 }

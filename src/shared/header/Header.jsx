@@ -1,5 +1,4 @@
 import { Toaster } from 'react-hot-toast';
-import { BiChevronDown } from 'react-icons/bi';
 import { FaBars, FaCartPlus, FaSearch } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
@@ -47,13 +46,13 @@ const Header = () => {
       </span>
 
       <div id="left">
-        <div id="lang">
+        {/* <div id="lang">
           <img src="/en.png" alt="lang-icon" />
         </div>
         <BiChevronDown />
         <div id="currency">
           <span>USD</span> <BiChevronDown size={20} />
-        </div>
+        </div> */}
 
         <nav>
           <Link to={'/'}>Home</Link>

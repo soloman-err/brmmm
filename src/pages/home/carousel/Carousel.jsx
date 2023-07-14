@@ -9,7 +9,7 @@ import 'swiper/css/pagination';
 
 // import required modules
 import LazyLoad from 'react-lazy-load';
-import { Autoplay, Navigation, Pagination } from 'swiper';
+import { Autoplay, Navigation } from 'swiper';
 
 const Carousel = () => {
   return (
@@ -18,15 +18,15 @@ const Carousel = () => {
         spaceBetween={30}
         centeredSlides={true}
         loop={true}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
+        // autoplay={{
+        //   delay: 2500,
+        //   disableOnInteraction: false,
+        // }}
         pagination={{
           clickable: true,
         }}
         navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
+        modules={[Autoplay, Navigation]}
         className="mySwiper"
       >
         <SwiperSlide>

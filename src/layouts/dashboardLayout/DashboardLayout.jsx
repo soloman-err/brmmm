@@ -36,19 +36,19 @@ const DashboardLayout = () => {
           {user && (
             <ul>
               <li>
-                <Link to={'/dashboard/profile'}>Profile</Link>
+                <Link className='link' to={'/dashboard/profile'}>Profile</Link>
               </li>
               <li>
-                <Link to={'/dashboard/all-users'}>All users</Link>
+                <Link className='link' to={'/dashboard/all-users'}>All users</Link>
               </li>
               <li>
-                <Link to={'/dashboard/all-products'}>All products</Link>
+                <Link className='link' to={'/dashboard/all-products'}>All products</Link>
               </li>
               <li>
-                <Link to={'/dashboard/add-product'}>Add a product</Link>
+                <Link className='link' to={'/dashboard/add-product'}>Add a product</Link>
               </li>
               <li>
-                <Link to={'/dashboard/settings'}>Settings</Link>
+                <Link className='link' to={'/dashboard/settings'}>Settings</Link>
               </li>
               {user ? (
                 <li>
@@ -68,16 +68,16 @@ const DashboardLayout = () => {
           {/* Default */}
           <ul>
             <li>
-              <Link to={'/'}>Home</Link>
+              <Link className='link' to={'/'}>Home</Link>
             </li>
             <li>
-              <Link to={'/dashboard/categories'}>Categories</Link>
+              <Link className='link' to={'/dashboard/categories'}>Categories</Link>
             </li>
             <li>
-              <Link to={'/dashboard/shop'}>Shop</Link>
+              <Link className='link' to={'/dashboard/shop'}>Shop</Link>
             </li>
             <li>
-              <Link to={'/dashboard/contact'}>Contact</Link>
+              <Link className='link' to={'/dashboard/contact'}>Contact</Link>
             </li>
           </ul>
         </aside>

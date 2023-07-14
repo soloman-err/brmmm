@@ -1,4 +1,14 @@
 section {
+  margin-top: 100px;
+
+  h2 {
+    font-size: 26px;
+    font-weight: 800;
+    text-decoration: underline;
+    text-underline-offset: 20px;
+    text-align: center;
+  }
+
   #shop {
     display: grid;
     gap: 20px;

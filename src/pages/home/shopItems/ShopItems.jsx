@@ -7,6 +7,7 @@ const ShopItems = () => {
 
   return (
     <section>
+      <h2>Popular Cars</h2>
       <div id="shop">
         {products &&
           products.map((product) => (

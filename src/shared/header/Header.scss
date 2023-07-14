@@ -8,6 +8,11 @@ header {
 
   #menu-bar {
     display: none;
+
+    button {
+      border: none;
+      background-color: transparent;
+    }
   }
 
   a {
@@ -100,7 +105,22 @@ header {
   }
 }
 
-/* Responsive Area */
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  header {
+    #right {
+      #logged {
+        display: none;
+      }
+    }
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (max-width: 768px) {
   header {
     #menu-bar {
@@ -123,4 +143,12 @@ header {
       }
     }
   }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
 }

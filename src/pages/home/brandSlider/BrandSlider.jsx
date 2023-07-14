@@ -12,7 +12,7 @@ const BrandSlider = () => {
   return (
     <section id='brand-slider'>
       <Swiper
-        spaceBetween={10}
+        spaceBetween={50}
         centeredSlides={true}
         slidesPerView={5}
         loop={true}

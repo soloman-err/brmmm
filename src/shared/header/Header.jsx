@@ -11,7 +11,6 @@ const Header = () => {
   const [cart] = useCart();
   const navigate = useNavigate();
   // console.log(user);
-  
 
   const handleLogOut = () => {
     try {
@@ -39,10 +38,16 @@ const Header = () => {
     navigate('/');
   };
 
+  const toggleMenu = () => {
+    console.log('toggleMenu');
+  };
+
   return (
     <header>
       <span id="menu-bar">
-        <FaBars size={22} />
+        <button onClick={toggleMenu}>
+          <FaBars size={22} />
+        </button>
       </span>
 
       <div id="left">
@@ -69,11 +74,11 @@ const Header = () => {
 
       <div id="right">
         {user && user ? (
-          <>
+          <div id="logged">
             <Link onClick={handleLogOut}>Logout</Link>
             <Toaster position="top-right" reverseOrder={false} />
             <Link to={'/dashboard/profile'}>Dashboard</Link>
-          </>
+          </div>
         ) : (
           <div id="user-auth">
             <Link to={'/login'}>Login</Link>
@@ -88,7 +93,7 @@ const Header = () => {
           {/* <input type="search" /> */}
           <FaSearch size={18} />
         </div>
-        
+
         <Link to={'/dashboard/cart'}>
           <div id="cart">
             <FaCartPlus size={20} />

@@ -89,11 +89,6 @@ const Footer = () => {
                 North Carolina, CA 09889
               </p>
             </div>
-
-            <div>
-              <h5>Hours</h5>
-              <p>M-F 6:00am - 8:00pm PST</p>
-            </div>
           </div>
         </div>
       </div>
@@ -126,8 +121,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <hr />
-      <small id="copyright">&copy;brmmm All rights reserved.</small>
+      <small id="copyright">&copy; brmmm 2023, All rights reserved.</small>
     </footer>
   );
 };

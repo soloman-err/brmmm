@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import { Toaster } from 'react-hot-toast';
-import { FaBars, FaCartPlus, FaSearch } from 'react-icons/fa';
+import { FaBars, FaCartPlus, FaSearch, FaTimes } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useAuth from '../../hooks/useAuth';
@@ -10,7 +11,8 @@ const Header = () => {
   const { user, logOut } = useAuth();
   const [cart] = useCart();
   const navigate = useNavigate();
-  // console.log(user);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  console.log(isMenuOpen);
 
   const handleLogOut = () => {
     try {
@@ -38,19 +40,33 @@ const Header = () => {
     navigate('/');
   };
 
+  // Navbar toggler:
   const toggleMenu = () => {
-    console.log('toggleMenu');
+    setIsMenuOpen(!isMenuOpen);
   };
 
   return (
     <header>
       <span id="menu-bar">
         <button onClick={toggleMenu}>
-          <FaBars size={22} />
+          {isMenuOpen ? <FaTimes size={26} /> : <FaBars size={22} />}
         </button>
       </span>
 
       <div id="left">
+        {/* Toggled Menu */}
+        <div className={`toggled-menu ${isMenuOpen ? 'show-menu' : ''}`}>
+          <nav>
+            <Link to={'/'}>Home</Link>
+            <Link to={'/popular'}>Popular</Link>
+            <Link to={'/blogs'}>Blogs</Link>
+            <Link onClick={handleLogOut}>Logout</Link>
+            <Link to={'/dashboard/profile'}>Dashboard</Link>
+            <Link to={'/login'}>Login</Link>
+            <Link to={'/register'}>Register</Link>
+          </nav>
+        </div>
+
         {/* <div id="lang">
           <img src="/en.png" alt="lang-icon" />
         </div>

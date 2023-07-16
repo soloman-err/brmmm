@@ -19,7 +19,7 @@ const ProductDetails = () => {
   const id = params.id.toString();
   const [product, setProduct] = useState(null);
 
-  console.log(product);
+  console.log(product?.subCategory);
   // const {productsTitle}= product;
 
   // refetch:
@@ -93,7 +93,9 @@ const ProductDetails = () => {
     <div id="product-details-root">
       {/* <Helmet><title>Product Details | brmmm</title></Helmet> */}
       <section id="product-details-section">
+        <div id='prod-img'>
         <img src={product?.photoURL} alt="item-card" />
+        </div>
 
         <div id="product-info">
           <div id="prod-details">
@@ -105,7 +107,7 @@ const ProductDetails = () => {
 
           <div id="cart-prod-quantity">
             <p>Quantity-</p>
-            <input type="number" name="quantity" />
+            <input type="number" name="quantity" defaultValue={1}/>
           </div>
 
 

@@ -9,12 +9,14 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useAuth from '../../hooks/useAuth';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
+import useProducts from '../../hooks/useProducts';
 import ProductCard from '../productCard/ProductCard';
 
 const ProductDetails = () => {
   const { user, loading } = useAuth();
   const navigate = useNavigate();
   const [axiosSecure] = useAxiosSecure();
+  const [products]= useProducts();
   const params = useParams();
   const id = params.id.toString();
   const [product, setProduct] = useState(null);
@@ -130,10 +132,9 @@ const ProductDetails = () => {
       <section id="suggested-section">
         <h4>You might also like</h4>
         <div id="product-card-container">
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
+          {
+            products?.map((product)=> <ProductCard key={product._id} product={product}></ProductCard>).slice(0, 4)
+          }
         </div>
       </section>
     </div>

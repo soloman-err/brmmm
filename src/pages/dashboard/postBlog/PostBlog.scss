@@ -1,0 +1,30 @@
+#post-blog {
+  form {
+    .form-control {
+      label {
+        margin: 5px 0;
+      }
+    }
+
+    #blog-desc {
+      width: 100%;
+      textarea {
+        width: 98%;
+        height: 100px;
+        padding: 5px;
+        border: 1px solid #ddd;
+        font-family: Inter, Arial, sans-serif;
+      }
+    }
+
+    #publish-btn {
+      margin: 10px 0;
+
+      button {
+        color: #ddd;
+        font-weight: 700;
+        padding: 10px 0;
+      }
+    }
+  }
+}

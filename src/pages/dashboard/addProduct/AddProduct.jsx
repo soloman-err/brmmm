@@ -175,7 +175,7 @@ const AddProduct = () => {
           required
         ></textarea>
       </div>
-      <div id='publish-btn' className="form-control mt-6">
+      <div id='publish-btn' className="form-control">
         <button type="submit">Publish</button>
       </div>
     </form>

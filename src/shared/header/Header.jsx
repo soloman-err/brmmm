@@ -57,7 +57,7 @@ const Header = () => {
         {/* Toggled Menu */}
         <div className={`toggled-menu ${isMenuOpen ? 'show-menu' : ''}`}>
           <nav>
-            <Link to={'/'}>Home</Link>
+            <Link className='a' to={'/'}>Home</Link>
             <Link to={'/popular'}>Popular</Link>
             <Link to={'/blogs'}>Blogs</Link>
             <Link onClick={handleLogOut}>Logout</Link>

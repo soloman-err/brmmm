@@ -48,6 +48,9 @@ const DashboardLayout = () => {
                 <Link className='link' to={'/dashboard/add-product'}>Add a product</Link>
               </li>
               <li>
+                <Link className='link' to={'/dashboard/post-blog'}>Post a blog</Link>
+              </li>
+              <li>
                 <Link className='link' to={'/dashboard/settings'}>Settings</Link>
               </li>
               {user ? (

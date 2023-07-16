@@ -8,8 +8,8 @@ const BlogCard = ({blog}) => {
       <div id='card-header'>
         <h2>{blog?.title}</h2>
         <div id='publish-info'>
-            <span>Author: Martian</span>
-            <span>published at: Jan23, 2033</span>
+            <span>Author: {blog?.author}</span>
+            <span>published at: {blog?.publishedAt}</span>
         </div>
       </div>
       <div id='card-body'>

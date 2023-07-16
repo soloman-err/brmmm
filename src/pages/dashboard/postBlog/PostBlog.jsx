@@ -1,18 +1,25 @@
 import Swal from 'sweetalert2';
+import useAuth from '../../../hooks/useAuth';
 import './PostBlog.scss';
 
 const PostBlog = () => {
+    const {user}=useAuth()
+
   const handlePostBlog = (event) => {
     event.preventDefault();
     const form = event.target;
     const photoURL = form.photoURL.value;
     const title = form.title.value;
     const desc = form.desc.value;
+    const author = form.author.value;
+    const publishedAt = new Date();
 
     const newProduct = {
       photoURL,
       title,
       desc,
+      author,
+      publishedAt
     };
 
     fetch('https://brmmm-server.vercel.app/postBlog', {
@@ -41,6 +48,20 @@ const PostBlog = () => {
       <h2>Post a new blog</h2>
 
       <form onSubmit={handlePostBlog}>
+         {/* Author name */}
+         <div className="form-control">
+            <label className="label">
+              <span className="label-text">Author</span>
+            </label>
+            <input
+              type="text"
+              name="author"
+              defaultValue={user?.displayName}
+              required
+              readOnly
+            />
+          </div>
+          
         {/* Title */}
         <div className="form-control">
           <label className="label">
